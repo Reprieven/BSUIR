@@ -1,0 +1,21 @@
+start: line+
+
+line: assignment
+    | implication
+
+assignment: NAME "=" "{" pair_list "}"
+
+pair_list: pair ("," pair)*
+
+pair: "<" ELEMENT "," NUMBER ">"
+
+implication: NAME "~>" NAME
+
+NAME: /[A-Z][A-Z0-9]*/
+
+ELEMENT: /[a-zA-Z][a-zA-Z0-9]*/
+
+NUMBER: /0(\.\d+)?|1(\.0+)?/
+
+%import common.WS
+%ignore WS
